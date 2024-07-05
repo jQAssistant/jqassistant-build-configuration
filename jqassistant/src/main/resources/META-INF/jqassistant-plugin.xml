@@ -5,7 +5,11 @@
     <description>Rules for legal questions on a jQAssistant related project</description>
     <rules>
         <resource>license-constraints.xml</resource>
-
+        <resource>files-constraints.xml</resource>
+        <resource>maven-constraints.xml</resource>
+        <resource>maven-constraints.yaml</resource>
+        <resource>plugin-constraints.xml</resource>
+        <resource>plugin-concepts.xml</resource>
 
         <!--
          ! See the comment at top of license.xml

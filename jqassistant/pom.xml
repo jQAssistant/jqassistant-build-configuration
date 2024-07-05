@@ -8,14 +8,6 @@
         <version>2.4.0-SNAPSHOT</version>
     </parent>
 
-    <packaging>pom</packaging>
     <artifactId>jqassistant</artifactId>
-
-    <modules>
-        <module>maven-commmon-constraints</module>
-        <module>project-layout-constraints</module>
-        <module>legal-constraints</module>
-        <module>plugin-rules</module>
-    </modules>
 
 </project>
