@@ -1,0 +1,10 @@
+<jqassistant-plugin xmlns="http://schema.jqassistant.org/plugin/v1.10"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://schema.jqassistant.org/plugin/v1.10 https://schema.jqassistant.org/plugin/jqassistant-plugin-v1.10.xsd"
+                    name="jQAssistant Internal Maven Rules" id="jqa.internal.ownconstraints.mavenrules">
+    <description>Rules Maven projects</description>
+    <rules>
+        <resource>maven-concepts.xml</resource>
+        <resource>maven-constraints.yaml</resource>
+    </rules>
+</jqassistant-plugin>

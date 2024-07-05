@@ -1,0 +1,53 @@
+<jqassistant-rules xmlns="http://schema.jqassistant.org/rule/v1.10"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 http://schema.jqassistant.org/rule/jqassistant-rule-v1.10.xsd">
+
+    <concept id="jqa-maven-constraints:mark-root-project" severity="blocker">
+        <description><![CDATA[
+This concept labels the parent Maven POM of a Maven Project with
+the label RootProject. This is needed to be able to write constraints
+on the root Maven POM of a Maven project.
+            ]]></description>
+        <cypher><![CDATA[
+        WITH
+            [{groupId: "com.buschmais.jqassistant", artifactId: "jqa-uber-parent"},
+             {groupId: "com.buschmais.jqassistant.plugin", artifactId: "parent"}] AS projects
+
+        UNWIND
+            projects AS project
+
+        MATCH
+            (rp:Maven:Project:Directory)-[:HAS_PARENT]->(p:Maven:Project)
+
+        WHERE
+            p.groupId=project.groupId and p.artifactId=project.artifactId
+
+        SET
+            rp:RootProject
+
+        RETURN
+            rp, p
+
+]]></cypher>
+    </concept>
+
+    <concept id="jqa-maven-constraints:jQAssistantArtifact" severity="blocker">
+        <description><![CDATA[
+This concept labels all artifacts with a groupId starting with "com.buschmais.jqassistant" with "jQAssistant".
+            ]]></description>
+        <cypher><![CDATA[
+        MATCH
+            (artifact:Artifact)
+
+        WHERE
+            artifact.group starts with "com.buschmais.jqassistant"
+
+        SET
+            artifact:jQAssistant
+
+        RETURN
+            artifact
+]]></cypher>
+    </concept>
+
+</jqassistant-rules>
