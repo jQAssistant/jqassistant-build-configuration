@@ -4,12 +4,12 @@ name: CI
 on:
   push:
     branches:
-      - initial-setup
+      - main
     tags-ignore:
       - "*"
   pull_request:
     branches:
-      - initial-setup
+      - main
   workflow_dispatch: {}
 
 concurrency:
