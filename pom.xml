@@ -33,6 +33,10 @@
         <tag>HEAD</tag>
     </scm>
 
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
+
     <modules>
         <module>asciidoc</module>
         <module>checkstyle</module>
