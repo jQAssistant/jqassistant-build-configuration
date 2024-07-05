@@ -15,7 +15,6 @@
         <module>project-layout-constraints</module>
         <module>legal-constraints</module>
         <module>plugin-rules</module>
-        <module>github-integration</module>
     </modules>
 
 </project>
