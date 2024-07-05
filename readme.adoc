@@ -1,35 +1,29 @@
 = jQAssistant Build
 
+This project provides settings and configurations for building jQAssistant.
+
 For more information on jQAssistant see https://jqassistant.org[^].
 
 == IDE settings
 
-- link:ide/intellij/java.xml[IntelliJ IDEA]
-- link:ide/eclipse[Eclipse]
+* link:ide/intellij/java.xml[IntelliJ IDEA]
+* link:ide/eclipse[Eclipse]
 
 == Checkstyle configuration
 
+* link:checkstyle/src/main/resources/checkstyle/[Checkstyle]
 
 == jQAssistant Rules
 
 Architectural and project layout rules for all jQAssistant subprojects.
 
-`com.buschmais.jqassistant:github-integration`::
 *jQAssistant Github Integration Rules* to ensure the correct Github integration
-`com.buschmais.jqassistant:legal-constraint`::
 *jQAssistant Legal Rules* to ensure that all license related informations are provided correctly
-`com.buschmais.jqassistant:maven-commmon-constraints`::
 *jQAssistant Maven Rules* to ensure that all Maven projects for jQAssistant are correctly configured
-`com.buschmais.jqassistant:plugin-rules`::
 *jQAssistant Plugin Rules* with rules to ensure the correct configuration and implementation of jQAssistant plugins
-`com.buschmais.jqassistant:project-layout-constraints`::
 *jQAssistant Project Layout Constraints* with rules regarding requirements on the directory structure and existing files in each Git project for jQAssistant
-
 
 == Asciidoc Stylesheets
 
-A collection of various stuff required by projects of the
-https://jqassistant.org[jQAssistant^] ecosystem to generate and
-to build the documentation of https://jqassistant.org[jQAssistant^].
-
+* XSL stylesheets for transforming jQA rule files to Asciidoc
 
