@@ -11,14 +11,14 @@
     <constraint id="jqa-plugin:UnregisteredLabel">
         <requiresConcept refId="jqa-plugin:Label"/>
         <requiresConcept refId="jqa-plugin:PluginDescriptorRegistersModel"/>
-        <description><![CDATA[
-        All XO @Label types must be registered in the plugin descriptor.
-            ]]></description>
+        <description>All XO @Label types must be registered in the plugin descriptor.</description>
         <cypher><![CDATA[
             MATCH
               (label:XO:Label)
-            WHERE
-                NOT ()-[:REGISTERS_MODEL]->()-[:IMPLEMENTS*0..]->(label)
+            WHERE NOT (
+              (label)-[:ANNOTATED_BY]->()-[:OF_TYPE]->(:Type{fqn:"com.buschmais.xo.api.annotation.Abstract"})
+              OR ()-[:REGISTERS_MODEL]->()-[:IMPLEMENTS*0..]->(label)
+            )
             RETURN
               label AS UnregisteredLabel
         ]]></cypher>
@@ -60,14 +60,16 @@ descriptor must look like this
         ]]></description>
         <cypher><![CDATA[
 MATCH
-    (pd:PluginDescriptor)
+    (artifact:Artifact)-[:CONTAINS]->(pd:PluginDescriptor)
         -[:HAS_ROOT_ELEMENT]->(rootElement:Xml {name: 'jqassistant-plugin'})
+WHERE
+    artifact.group = "com.buschmais.jqassistant.plugin"
 OPTIONAL MATCH
     (rootElement)
         -[:HAS_ATTRIBUTE]->(attribute:Xml:Attribute {name: 'id'})
 
 WITH
-    pd, rootElement, attribute
+    artifact, pd, rootElement, attribute
 
 WHERE
     attribute IS NULL
@@ -75,7 +77,7 @@ WHERE
     OR NOT (rootElement)-[:DECLARES_NAMESPACE]->(:Xml:Namespace { uri: "http://schema.jqassistant.org/plugin/v1.10" })
 
 RETURN
-    *
+    artifact as Artifact, pd as PluginDescriptor
 
 ]]></cypher>
     </constraint>
