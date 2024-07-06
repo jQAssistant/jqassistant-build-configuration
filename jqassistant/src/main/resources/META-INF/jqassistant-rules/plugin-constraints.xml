@@ -45,9 +45,8 @@
     <constraint id="jqa-plugin:pluginid-must-be-given">
         <requiresConcept refId="jqa-plugin:PluginDescriptor"/>
         <description><![CDATA[
-Starting with version 1.10 of the XML Schema for plugins,
-the root element of the plugin descriptor must carry the id
-attribute. The id itself must start with the prefix 'jqa.'.
+The root element of the plugin descriptor must provide the id
+attribute. The id itself must start with the prefix 'jqa.plugin'.
 
 An example for a valid root element declaration for a plugin
 descriptor must look like this
@@ -74,7 +73,6 @@ WITH
 WHERE
     attribute IS NULL
     OR NOT (attribute.value STARTS WITH "jqa.plugin.")
-    OR NOT (rootElement)-[:DECLARES_NAMESPACE]->(:Xml:Namespace { uri: "http://schema.jqassistant.org/plugin/v1.10" })
 
 RETURN
     artifact as Artifact, pd as PluginDescriptor
