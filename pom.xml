@@ -30,7 +30,6 @@
         <connection>scm:git:git@github.com:jqassistant/jqassistant-build.git</connection>
         <developerConnection>scm:git:git@github.com:jqassistant/jqassistant-build.git</developerConnection>
         <url>https://github.com/jqassistant/jqassistant-build</url>
-        <tag>HEAD</tag>
     </scm>
 
     <properties>
