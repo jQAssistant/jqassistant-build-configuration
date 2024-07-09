@@ -144,8 +144,8 @@ constraints:
           -[HAS_SCM]->(scm:Scm:Maven)
 
       WHERE     
-        scm.developerConnection STARTS WITH "scm:git:git@github.com:jqassistant/"
-        AND scm.connection STARTS WITH "scm:git:git@github.com:jqassistant/"
+        scm.developerConnection STARTS WITH "scm:git:https://github.com/jqassistant/"
+        AND scm.connection STARTS WITH "scm:git:https://github.com/jqassistant/"
         AND scm.url STARTS WITH "https://github.com/jqassistant/"
         AND NOT (project)<-[:HAS_MODULE]-()
 
