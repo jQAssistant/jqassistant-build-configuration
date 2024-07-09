@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.buschmais.jqassistant.build</groupId>
@@ -11,13 +10,21 @@
     <url>https://jqassistant.org/</url>
 
     <description>
-
+        Provides build related settings for jQAssistant.
     </description>
 
     <organization>
         <name>jQAssistant Development Team</name>
         <url>https://jqassistant.org</url>
     </organization>
+
+    <developers>
+        <developer>
+            <id>dirk-mahler</id>
+            <name>Dirk Mahler</name>
+            <email>dirk.mahler@buschmais.com</email>
+        </developer>
+    </developers>
 
     <licenses>
         <license>
@@ -27,17 +34,11 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:jqassistant/jqassistant-build.git</connection>
-        <developerConnection>scm:git:git@github.com:jqassistant/jqassistant-build.git</developerConnection>
+        <connection>scm:git:https://github.com/jqassistant/jqassistant-build.git</connection>
+        <developerConnection>scm:git:https://github.com/jqassistant/jqassistant-build.git</developerConnection>
         <url>https://github.com/jqassistant/jqassistant-build</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <properties>
-        <maven.compiler.release>11</maven.compiler.release>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-    </properties>
+      <tag>HEAD</tag>
+  </scm>
 
     <distributionManagement>
         <snapshotRepository>
@@ -51,6 +52,12 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+    </properties>
 
     <modules>
         <module>asciidoc</module>
