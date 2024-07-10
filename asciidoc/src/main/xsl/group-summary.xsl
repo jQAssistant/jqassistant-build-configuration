@@ -4,7 +4,7 @@
 
     <xsl:template match="*:jqassistant-rules">
         <xsl:for-each select="*:group">
-* &lt;&lt;<xsl:value-of select="@*:id"/>&gt;&gt;
+            * &lt;&lt;<xsl:value-of select="@*:id"/>&gt;&gt;
         </xsl:for-each>
     </xsl:template>
 
