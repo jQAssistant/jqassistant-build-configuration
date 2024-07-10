@@ -7,8 +7,8 @@
     </xsl:variable>
 
     <xsl:template match="*:jqassistant-rules">
-        <xsl:apply-templates select="*:group"/>
-        <xsl:apply-templates select="*:concept | *:constraint"/>
+        <xsl:apply-templates select="*:group" />
+        <xsl:apply-templates select="*:concept | *:constraint" />
     </xsl:template>
 
     <xsl:template match="*:group">
@@ -43,20 +43,19 @@
                 <xsl:when test="local-name(.) = 'concept'">Concept</xsl:when>
                 <xsl:otherwise>
                     <xsl:message terminate="yes">Element
-                        <xsl:value-of select="local-name(.)"/>
-                        not supported.
+                        <xsl:value-of select="local-name(.)"/> not supported.
                     </xsl:message>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
 
         [[<xsl:value-of select="@*:id"/>]]
-        ===<xsl:value-of select="$typeName"/>&#x00A0;`<xsl:value-of select="@*:id"/>`
+        === <xsl:value-of select="$typeName"/>&#x00A0;`<xsl:value-of select="@*:id"/>`
         <xsl:value-of select="$newline"/>
 
         <xsl:if test="*:deprecated">
             <xsl:value-of select="$newline"/>
-            _The rule is deprecated:<xsl:value-of select="*:deprecated"/>_
+            _The rule is deprecated: <xsl:value-of select="*:deprecated"/>_
             <xsl:value-of select="$newline"/>
         </xsl:if>
 
