@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.buschmais.jqassistant.build</groupId>
         <artifactId>parent</artifactId>
-        <version>X.Y.Z</version>
+        <version>X.Y.Z-SNAPSHOT</version>
     </parent>
 
     <artifactId>asciidoc</artifactId>

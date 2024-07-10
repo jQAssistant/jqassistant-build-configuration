@@ -3,7 +3,7 @@
 
     <groupId>com.buschmais.jqassistant.build</groupId>
     <artifactId>parent</artifactId>
-    <version>X.Y.Z</version>
+    <version>X.Y.Z-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>jQAssistant Build</name>
@@ -37,7 +37,7 @@
         <connection>scm:git:https://github.com/jqassistant/jqassistant-build.git</connection>
         <developerConnection>scm:git:https://github.com/jqassistant/jqassistant-build.git</developerConnection>
         <url>https://github.com/jqassistant/jqassistant-build</url>
-      <tag>X.Y.Z</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <distributionManagement>
