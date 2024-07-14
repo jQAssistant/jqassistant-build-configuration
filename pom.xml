@@ -57,6 +57,12 @@
         <maven.compiler.release>11</maven.compiler.release>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
+        <maven-sonar-plugin.version>4.0.0.4121</maven-sonar-plugin.version>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>jqassistant</sonar.organization>
+        <sonar.projectKey>jqassistant_jqassistant-build</sonar.projectKey>
+        <sonar.login>${env.SONARCLOUD_LOGIN}</sonar.login>
     </properties>
 
     <modules>
@@ -71,7 +77,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.1</version>
+                    <version>${maven-release-plugin.version}</version>
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
@@ -79,6 +85,11 @@
                         <goals>deploy</goals>
                         <releaseProfiles>release</releaseProfiles>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${maven-sonar-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
