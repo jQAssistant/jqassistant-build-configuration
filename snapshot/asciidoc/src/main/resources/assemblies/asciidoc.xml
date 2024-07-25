@@ -1,0 +1,71 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <!--
+     ! The purpose of this assembly descriptor is to gather all types of sources
+     ! contained in one project/repository in a single archive. The generated archive
+     ! will act as source of the project/repository for the user manual.
+     !
+     ! Oliver B. Fischer, 2016-08-10
+     !-->
+
+    <id>asciidoc</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>${project.groupId}/${project.artifactId}</baseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>src/main/asciidoc</directory>
+            <outputDirectory>asciidoc</outputDirectory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/generated-sources/asciidoc</directory>
+            <outputDirectory>asciidoc</outputDirectory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <!--
+             ! Why do we include the JavaDoc in the assembly. Why do
+             ! we not used the generated Javadoc jar?
+             ! This is currently the best way to ensure a fixed directory
+             ! layout for the user manual that we can not do with
+             ! the current version of the Maven Dependency Plugin.
+             ! Oliver B. Fischer, 2016-08-20
+             !-->
+            <directory>${project.build.directory}/apidocs</directory>
+            <outputDirectory>apidocs</outputDirectory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src</directory>
+            <outputDirectory>source</outputDirectory>
+            <includes>
+                <include>main/java/**</include>
+                <include>main/resources/**</include>
+                <include>jqassistant/**</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+    </fileSets>
+    <!--
+     ! Not sure if we need the POM really. Maybe it could be removed?
+     ! Oliver B. Fischer, 2016-08-10
+     !-->
+    <files>
+        <file>
+            <outputDirectory>src</outputDirectory>
+            <source>pom.xml</source>
+            <filtered>true</filtered>
+        </file>
+    </files>
+</assembly>

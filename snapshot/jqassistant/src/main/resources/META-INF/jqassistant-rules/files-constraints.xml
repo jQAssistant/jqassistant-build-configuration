@@ -1,0 +1,77 @@
+<jqassistant-rules xmlns="http://schema.jqassistant.org/rule/v1.10"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 http://schema.jqassistant.org/rule/jqassistant-rule-v1.10.xsd">
+
+    <group id="jqa-project-layout">
+        <includeConstraint refId="jqa-project-layout:documentation:releasenotes-exists" />
+        <includeConstraint refId="jqa-project-layout:editorconfig:exists" />
+        <includeConstraint refId="jqa-project-layout:readme:exists" />
+    </group>
+
+    <constraint id="jqa-project-layout:editorconfig:exists" severity="minor">
+        <description><![CDATA[
+Each repository should contain an editor config configuration file
+called '.editorconfig' in its root directory. For more
+details on '.editorconfig' see https://editorconfig.org/
+]]></description>
+        <cypher><![CDATA[
+            MATCH
+                (project:Maven:Project:Directory:File)-[:CONTAINS]->(config:File)
+
+            WHERE
+                config.fileName ENDS WITH '/.editorconfig'
+                AND NOT (project)<-[:HAS_MODULE]-(:Maven)
+
+            RETURN *
+        ]]></cypher>
+        <verify>
+            <rowCount min="1" max="1" />
+        </verify>
+    </constraint>
+
+
+    <constraint id="jqa-project-layout:readme:exists" severity="minor">
+        <description><![CDATA[
+            It must exist in the root directory of the project a
+            readme file called 'readme.adoc'.
+
+            This file will be displayed on Github while browsing
+            the repositories.
+            ]]></description>
+        <cypher><![CDATA[
+            MATCH
+                (project:Maven:Project:Directory:File)
+                    -[:CONTAINS]->(readme:File)
+
+            WHERE
+                readme.fileName ENDS WITH '/readme.adoc'
+                AND NOT (project)<-[:HAS_MODULE]-(:Maven)
+
+            RETURN *
+        ]]></cypher>
+        <verify>
+            <rowCount min="1" max="1" />
+        </verify>
+    </constraint>
+
+    <constraint id="jqa-project-layout:documentation:releasenotes-exists"
+                severity="minor">
+        <description><![CDATA[
+There should be an Asciidoctor document for the release notes of this version.
+
+]]></description>
+        <cypher><![CDATA[
+            MATCH
+                (project:Project:Maven:Directory:File)
+
+            WHERE
+                NOT (project)-[:CONTAINS]->(:Directory)-[:CONTAINS]->(:File {fileName: "/release-notes.adoc"})
+                AND NOT (project)<-[:HAS_MODULE]-(:Maven)
+
+            RETURN
+                project.name AS Project
+        ]]></cypher>
+    </constraint>
+
+
+</jqassistant-rules>

@@ -1,0 +1,16 @@
+<jqassistant-plugin xmlns="http://schema.jqassistant.org/plugin/v1.10"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://schema.jqassistant.org/plugin/v1.10 https://schema.jqassistant.org/plugin/jqassistant-plugin-v1.10.xsd"
+                    name="jQAssistant Rules" id="jqa.jqassistant"
+                    version="${project.version}">
+    <description>Rules for jQAssistant projects.</description>
+    <rules>
+        <resource>license-constraints.xml</resource>
+        <resource>files-constraints.xml</resource>
+        <resource>maven-concepts.xml</resource>
+        <resource>maven-constraints.yaml</resource>
+        <resource>plugin-constraints.xml</resource>
+        <resource>plugin-concepts.xml</resource>
+    </rules>
+
+</jqassistant-plugin>
