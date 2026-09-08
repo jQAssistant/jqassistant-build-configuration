@@ -88,7 +88,7 @@
 
         <!-- Tests -->
         <it.jqassistant.store.uri>memory:target/jqassistant/test-store</it.jqassistant.store.uri>
-        <maven-invoker-plugin.groovy.version>5.1.1</maven-invoker-plugin.groovy.version>
+        <maven-invoker-plugin.groovy.version>5.1.2</maven-invoker-plugin.groovy.version>
     </properties>
 
     <modules>
