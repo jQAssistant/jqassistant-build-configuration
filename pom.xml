@@ -83,7 +83,7 @@
         <dependency-check-maven.version>13.0.0</dependency-check-maven.version>
 
         <!-- SonarQube -->
-        <maven-sonar-plugin.version>5.7.0.6970</maven-sonar-plugin.version>
+        <maven-sonar-plugin.version>5.8.0.7211</maven-sonar-plugin.version>
         <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
         <!-- Tests -->
